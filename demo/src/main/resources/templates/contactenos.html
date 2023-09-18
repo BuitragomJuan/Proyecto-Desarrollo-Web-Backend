@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>contactenos</title>
+    <link rel="stylesheet" href="../static/css/styling.css">
+</head>
+<body>
+    <script src = "../static/js/contacto.js"></script>
+    <div class="banner">
+        <form>
+            <label for="names">Nombres:</label><br>
+            <input type ="text" id="names" onkeydown= "namesConstraint(this.value)" name="names"><br>
+            <label class= "hiddenElm" id="charsName">m&aacute;ximo de car&aacute;cteres alcanzado</label><br>
+            <label for="lstnames">Apellidos:</label><br>
+            <input type ="text" id="lstnames" onkeydown= "lastNConstraint(this.value)" name="lstnames"><br>
+            <label class= "hiddenElm" id="charslst">m&aacute;ximo de caracteres alcanzado</label><br>
+            <label for="date">Fecha:</label><br>
+            <input type="text" id="date" onkeydown="dateConstraint(this.value)" name="date"><br>
+            <label class="dateLabel" id="charDate">la fecha no puede ser nula</label><br>
+            <label for="age">Edad:</label><br>
+            <input type="text" id="age" onkeydown="ageConstraint(this.value)"   name="age"><br>
+            <label class="hiddenElm" id="charAge01" >la edad debe ser un valor entero</label><br>
+            <label class="hiddenElm" id="charAge02" >la edad debe ser un valor menor a 100</label><br>
+
+
+        </form>
+
+    </div>
+</body>
+
+</html>
