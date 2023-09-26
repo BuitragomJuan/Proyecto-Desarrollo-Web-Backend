@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.usuarios;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,12 +7,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(
-
-    name = "usuariovotante"
-
+    name = "usuarioadmon"
 )
-public class Usuariovotante {
-    
+public class UsuarioAdmon {
+
+
     @Id
     @Column(
         name = "ID",
@@ -43,7 +42,7 @@ public class Usuariovotante {
     )
     private String pass;
 
-    public Usuariovotante (){
+    public UsuarioAdmon (){
 
     }
 
@@ -78,6 +77,7 @@ public class Usuariovotante {
     public void setPassword(String password){
         this.pass= password;
     }
+    
 
-
+    
 }
