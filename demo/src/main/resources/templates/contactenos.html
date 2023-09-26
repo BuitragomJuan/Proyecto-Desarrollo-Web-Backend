@@ -6,18 +6,18 @@
 <body>
     <script src = "../static/js/contacto.js"></script>
     <div class="banner">
-        <form>
-            <label for="names">Nombres:</label><br>
-            <input type ="text" id="names" onkeydown= "namesConstraint(this.value)" name="names"><br>
+        <form th:action="@{/contactenos/save-data}" method="post">
+            <label for="nombre">Nombres:</label><br>
+            <input type ="text" id="nombre" onkeydown= "namesConstraint(this.value)" name="nombre"><br>
             <label class= "hiddenElm" id="charsName">m&aacute;ximo de car&aacute;cteres alcanzado</label><br>
-            <label for="lstnames">Apellidos:</label><br>
-            <input type ="text" id="lstnames" onkeydown= "lastNConstraint(this.value)" name="lstnames"><br>
+            <label for="apellido">Apellidos:</label><br>
+            <input type ="text" id="apellido" onkeydown= "lastNConstraint(this.value)" name="apellido"><br>
             <label class= "hiddenElm" id="charslst">m&aacute;ximo de caracteres alcanzado</label><br>
-            <label for="date">Fecha:</label><br>
-            <input type="text" id="date" onkeydown="dateConstraint(this.value)" name="date"><br>
+            <label for="fecha">Fecha:</label><br>
+            <input type="text" id="fecha" onkeydown="dateConstraint(this.value)" name="fecha"><br>
             <label class="dateLabel" id="charDate">la fecha no puede ser nula</label><br>
-            <label for="age">Edad:</label><br>
-            <input type="text" id="age" onkeydown="ageConstraint(this.value)"   name="age"><br>
+            <label for="edad">Edad:</label><br>
+            <input type="text" id="edad" onkeydown="ageConstraint(this.value)"   name="edad"><br>
             <label class="hiddenElm" id="charAge01" >la edad debe ser un valor entero</label><br>
             <label class="hiddenElm" id="charAge02" >la edad debe ser un valor menor a 100</label><br>
 

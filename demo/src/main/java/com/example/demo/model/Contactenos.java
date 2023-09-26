@@ -1,14 +1,9 @@
-package com.example.demo;
+package com.example.demo.model;
 
-import java.sql.Date;
-import java.util.Iterator;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import com.amazonaws.util.json.JSONArray;
-import com.amazonaws.util.json.JSONObject;
 
 @Entity
 @Table(
@@ -17,10 +12,32 @@ import com.amazonaws.util.json.JSONObject;
 public class Contactenos {
 
     @Id
+    @Column(
+        name = "nombre",
+        nullable = false,
+        columnDefinition = "Text"
+    )
     private String nombre;
 
+    @Column(
+        name = "apellido",
+        nullable = false,
+        columnDefinition = "Text"
+    )
     private String apellido;
-    private Date fecha;
+
+    @Column(
+        name = "fecha",
+        nullable = false,
+        columnDefinition = "Text"
+    )
+    private String fecha;
+
+    @Column(
+        name= "edad",
+        nullable = false,
+        columnDefinition = "Integer"
+    )
     private int edad;
 
     public Contactenos(){
@@ -30,7 +47,7 @@ public class Contactenos {
         this.edad = 0;
     }
 
-    public Contactenos(String nom, String lastn, Date dat, int age){
+    public Contactenos(String nom, String lastn, String dat, int age){
         this.nombre = nom;
         this.apellido = lastn;
         this.fecha = dat;
@@ -53,11 +70,11 @@ public class Contactenos {
         return this.apellido;
     }
 
-    public void setFecha(Date fecha){
+    public void setFecha(String fecha){
         this.fecha = fecha;
     }
 
-    public Date getFecha(){
+    public String getFecha(){
         return this.fecha;
     }
 
@@ -69,31 +86,11 @@ public class Contactenos {
         return this.edad;
     }
 
-    public void setValores(String nombre, String apellido, Date fecha, int edad){
+    public void setValores(String nombre, String apellido, String fecha, int edad){
         this.nombre = nombre;
         this.apellido = apellido;
         this.fecha = fecha;
         this.edad = edad;
     }
-
-    public JSONObject toJSON() throws Exception {
-		JSONObject japlicacion = new JSONObject();
-		japlicacion.put("nombre", getNombre());
-		japlicacion.put("apellido", getApellido());
-		japlicacion.put("fecha", getFecha());
-		japlicacion.put("edad", getEdad());
-		return japlicacion;
-	}
-
-    public static JSONArray toJSONArray( Iterable<Contactenos>contactenos ) throws Exception {
-		JSONArray jcontactenos = new JSONArray();
-		Iterator<Contactenos> icontactenos = contactenos.iterator();
-		while( icontactenos.hasNext() ) {
-			Contactenos contacteno = icontactenos.next();
-			jcontactenos.put( contacteno.toJSON() );
-		}
-		
-		return jcontactenos;
-	}
     
 }
