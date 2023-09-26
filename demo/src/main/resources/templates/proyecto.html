@@ -11,8 +11,8 @@
         <div class="content">
             <h1 class="maint">DESCRIPCI&Oacute;N DEL PROYECTO</h1><br>
             <p class="parrafos_proyecto">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore at tempora eaque quos earum corrupti nesciunt possimus, veritatis nam accusantium soluta, officia repellendus, nihil ut rerum commodi dolor perspiciatis voluptates.
-                At voluptate consequatur nesciunt consectetur facilis minima provident earum cupiditate nulla accusantium aperiam, architecto eius quidem ipsam qui impedit velit dolore quos dolorem temporibus laboriosam officia ab. Aperiam, ex nisi.
+                El actual proyecto tiene como objetivo evaluar los conocimientos aprendidos en la clase de desarrollo web. De igual manera llevar a cabo un proyecto real
+                que está relacionado con el mundo músical y que emplea varios de los conceptos aprendidos en la clase.
             </p>
         
             <h1 class="maint">REQUERIMIENTOS</h1>
@@ -67,29 +67,188 @@
             <h1 class="=maint">ARQUITECTURA DEL PROYECTO</h1>
             <h2 class="subtext">Diagramas</h2>
             <h2 class="subtext">Modelo conceptual</h2>
-            <img src="../static/images/conceptual.jpg">
+            <img src="../static/images/conceptual.jpg" style="width: 600px; height: 400px;">
             <h2>Modelo contenedores</h2>
-            <img src="../static/images/contenedores.jpg">
+            <img src="../static/images/contenedores.jpg" style="width: 600px; height: 400px;">
             <h1>Modelo componente</h2>
-            <img src="../static/images/componente.jpg">
+            <img src="../static/images/componente.jpg" style="width: 600px; height: 400px;">
             <h2 class="subtext">Modelos</h2>
             <h3 class="subtext">Entidad/relaci&oacute;n:Diccionario</h3>
-            <p class="parrafos_proyecto">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore at tempora eaque quos earum corrupti nesciunt possimus, veritatis nam accusantium soluta, officia repellendus, nihil ut rerum commodi dolor perspiciatis voluptates.
-                At voluptate consequatur nesciunt consectetur facilis minima provident earum cupiditate nulla accusantium aperiam, architecto eius quidem ipsam qui impedit velit dolore quos dolorem temporibus laboriosam officia ab. Aperiam, ex nisi.
-            </p>
+            <img src="../static/images/ModeloER.png" style="width: 600px; height: 400px;">
             <h2 class="subtext">Diagrama de despliegue</h2>
             <p class="parrafos_proyecto">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore at tempora eaque quos earum corrupti nesciunt possimus, veritatis nam accusantium soluta, officia repellendus, nihil ut rerum commodi dolor perspiciatis voluptates.
                 At voluptate consequatur nesciunt consectetur facilis minima provident earum cupiditate nulla accusantium aperiam, architecto eius quidem ipsam qui impedit velit dolore quos dolorem temporibus laboriosam officia ab. Aperiam, ex nisi.
             </p>
 
-            <h1 class="maint">PARA DESARROLLO</h1>
-            <h2 class="subtext">Descripciones de endpoints</h2>
+            <h1 class="maint">ENTREGA 1</h1>
+            <h2 class="subtext">Diccionario de datos</h2>
             <p class="parrafos_proyecto">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore at tempora eaque quos earum corrupti nesciunt possimus, veritatis nam accusantium soluta, officia repellendus, nihil ut rerum commodi dolor perspiciatis voluptates.
-                At voluptate consequatur nesciunt consectetur facilis minima provident earum cupiditate nulla accusantium aperiam, architecto eius quidem ipsam qui impedit velit dolore quos dolorem temporibus laboriosam officia ab. Aperiam, ex nisi.
+                Tabla: Usuarios
+                - ‘ID’: Clave primaria, identificador único del usuario.
+                - ‘Nombre de usuario’: Nombre de usuario único para autenticación.
+                - ‘Contraseña’: Contraseña almacenada de forma segura.
+
+                Tabla: Géneros Musicales
+                - ‘ID’: Clave primaria, identificador único del género musical.
+                - ‘Nombre del género’: Nombre del género musical.
+
+                Tabla: Canciones
+                - ‘ID’: Clave primaria, identificador único de la canción.
+                - ‘Nombre de la canción’: Nombre de la canción.
+                - ‘Artista’: Nombre del artista de la canción.
+                - ‘Año de lanzamiento’: Año en que se lanzó la canción.
+                - ‘Género musical’: Clave foránea que hace referencia a la tabla de géneros musicales.
+
+                Tabla: Votos de Usuarios
+                - ‘ID’: Clave primaria, identificador único del voto.
+                - ‘ID del usuario’: Clave foránea que hace referencia a la tabla de usuarios.
+                - ‘ID de la canción’: Clave foránea que hace referencia a la tabla de canciones.
+                - ‘Valor de votación’: Valor numérico que representa la votación (positivo para voto, negativo para desvoto).
+
+                Tabla: Listas de Reproducción por Género
+                - ‘ID’: Clave primaria, identificador único de la lista de reproducción.
+                - ‘ID del usuario’: Clave foránea que hace referencia a la tabla de usuarios.
+                - ‘Género musical’: Clave foránea que hace referencia a la tabla de géneros musicales.
+
+                Tabla: Registro de Actividad de Administradores
+                - ‘ID’: Clave primaria, identificador único de la actividad.
+                - ‘ID del usuario’: Clave foránea que hace referencia a la tabla de usuarios.
+                - ‘Actividad realizada’: Tipo de actividad realizada por el administrador (creación, edición o eliminación de géneros o canciones).
+                - ‘Fecha y hora de la actividad’: Registro de la fecha y hora en que se realizó la actividad.
+
             </p>
+            <h2 class="subtext">Pruebas Unitarias</h2>
+            <table class="tablaProyecto">
+                <tr>
+                  <td class="columnaProyecto">Clase</td>
+                  <td class="columnaProyecto">Nombre de la prueba</td>
+                  <td class="columnaProyecto">Descripci&oacute;</td>
+                  <td class="columnaProyecto">Resultados Esperados</td>
+                  <td class="columnaProyecto">Resultados reales</td>
+                  <td class="columnaProyecto">Cumpli&oacute;</td>
+                </tr>
+                <tr>
+                  <td class="columnaProyecto">Usuario</td>
+                  <td class="columnaProyecto">Creaci&oacute;n de Usuario</td>
+                  <td class="columnaProyecto">Verifica que un nuevo usuario pueda registrarse con &eacute;xito en la aplicaci&oacute;n.</td>
+                  <td class="columnaProyecto">Debe crearse un nuevo usuario en la base de datos y estar disponible para iniciar sesi&oacute;n.</td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                </tr>
+                <tr>
+                  <td class="columnaProyecto">Usuario</td>
+                  <td class="columnaProyecto">Autenticaci&oacute;n de Usuario</td>
+                  <td class="columnaProyecto">Asegura que los usuarios puedan iniciar sesi&oacute;n de manera segura.</td>
+                  <td class="columnaProyecto">Los usuarios autenticados pueden acceder a sus cuentas.</td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                </tr>
+                <tr>
+                    <td class="columnaProyecto">Usuario</td>
+                    <td class="columnaProyecto">Actualizaci&oacute;n de Datos de Usuario</td>
+                    <td class="columnaProyecto">Verifica que los usuarios puedan actualizar su información de perfil.</td>
+                    <td class="columnaProyecto">Los datos del usuario se actualizan correctamente en la base de datos.</td>
+                    <td class="columnaProyecto"></td>
+                    <td class="columnaProyecto"></td>
+                  </tr>
+                  <tr>
+                    <td class="columnaProyecto">Usuario</td>
+                    <td class="columnaProyecto">Eliminaci&oacute;n de Usuario</td>
+                    <td class="columnaProyecto">Comprueba que los usuarios puedan eliminar sus cuentas de usuario.</td>
+                    <td class="columnaProyecto">La cuenta del usuario se elimina de la base de datos.</td>
+                    <td class="columnaProyecto"></td>
+                    <td class="columnaProyecto"></td>
+                  </tr>
+                  <tr>
+                    <td class="columnaProyecto">Usuario</td>
+                    <td class="columnaProyecto">Validaci&oacute;n de Contraseña</td>
+                    <td class="columnaProyecto">Asegura que la aplicaci&oacute;n valide y maneje adecuadamente las contraseñas de los usuarios.</td>
+                    <td class="columnaProyecto">La aplicaci&oacute;n debe rechazar contraseñas d&eacute;biles o incorrectas.</td>
+                    <td class="columnaProyecto"></td>
+                    <td class="columnaProyecto"></td>
+                  </tr>
+                  <tr>
+                    <td class="columnaProyecto">Genero</td>
+                    <td class="columnaProyecto">Creaci&oacute;n de G&eacute;nero Musical (Usuario Administrador)</td>
+                    <td class="columnaProyecto">Verifica que los usuarios administradores puedan crear nuevos g&eacute;neros musicales.</td>
+                    <td class="columnaProyecto">Debe crearse un nuevo g&eacute;nero musical en la base de datos.</td>
+                    <td class="columnaProyecto"></td>
+                    <td class="columnaProyecto"></td>
+                  </tr>
+                  <tr>
+                    <td class="columnaProyecto">Genero</td>
+                    <td class="columnaProyecto">Actualizaci&oacute;n de G&eacute;nero Musical (Usuario Administrador):</td>
+                    <td class="columnaProyecto">Asegura que los usuarios administradores puedan editar la informaci&oacute;n de g&eacute;neros musicales existentes.</td>
+                    <td class="columnaProyecto">Los datos del g&eacute;nero musical se actualizan correctamente en la base de datos.</td>
+                    <td class="columnaProyecto"></td>
+                    <td class="columnaProyecto"></td>
+                  </tr>
+                  <tr>
+                      <td class="columnaProyecto">Genero</td>
+                      <td class="columnaProyecto">Eliminaci&oacute;n de G&eacute;nero Musical (Usuario Administrador):</td>
+                      <td class="columnaProyecto">Comprueba que los usuarios administradores puedan eliminar g&eacute;neros musicales existentes.</td>
+                      <td class="columnaProyecto">El g&eacute;nero musical se elimina de la base de datos.</td>
+                      <td class="columnaProyecto"></td>
+                      <td class="columnaProyecto"></td>
+                    </tr>
+                    <tr>
+                      <td class="columnaProyecto">Genero</td>
+                      <td class="columnaProyecto">B&uacute;squeda de G&eacute;neros Musicales</td>
+                      <td class="columnaProyecto">Verifica que la b&uacute;squeda de g&eacute;neros musicales devuelva resultados precisos.</td>
+                      <td class="columnaProyecto">Los resultados de b&uacute;squeda deben ser precisos y completos.</td>
+                      <td class="columnaProyecto"></td>
+                      <td class="columnaProyecto"></td>
+                    </tr>
+                    <tr>
+                      <td class="columnaProyecto">Genero</td>
+                      <td class="columnaProyecto">Validaci&oacute;n de Datos de G&eacute;nero Musical</td>
+                      <td class="columnaProyecto">Asegura que la aplicaci&oacute;n valide y maneje adecuadamente los datos de g&eacute;neros musicales.</td>
+                      <td class="columnaProyecto">La aplicaci&oacute;n debe rechazar datos inv&aacute;lidos o incorrectos.</td>
+                      <td class="columnaProyecto"></td>
+                      <td class="columnaProyecto"></td>
+                    </tr>
+                    <tr>
+                        <td class="columnaProyecto">Canci&oacute;n</td>
+                        <td class="columnaProyecto">Creaci&oacute;n de Canci&oacute;n</td>
+                        <td class="columnaProyecto">Verifica que se pueda agregar una nueva canci&oacute;n de manera exitosa.</td>
+                        <td class="columnaProyecto">Debe crearse una nueva canci&oacute;n en la base de datos.</td>
+                        <td class="columnaProyecto"></td>
+                        <td class="columnaProyecto"></td>
+                      </tr>
+                      <tr>
+                        <td class="columnaProyecto">Canci&oacute;n</td>
+                        <td class="columnaProyecto">Actualizaci&oacute;n de Canci&oacute;n:</td>
+                        <td class="columnaProyecto">Asegura que se pueda editar la informaci&oacute;n de una canci&oacute;n existente.</td>
+                        <td class="columnaProyecto">Los datos de la canci&oacute;n se actualizan correctamente en la base de datos.</td>
+                        <td class="columnaProyecto"></td>
+                        <td class="columnaProyecto"></td>
+                      </tr>
+                      <tr>
+                          <td class="columnaProyecto">Canci&oacute;n</td>
+                          <td class="columnaProyecto">Eliminaci&oacute;n de Canci&oacute;n</td>
+                          <td class="columnaProyecto">Comprueba que se pueda eliminar una canci&oacute;n de la base de datos.</td>
+                          <td class="columnaProyecto">La canci&oacute;n se elimina de la base de datos.</td>
+                          <td class="columnaProyecto"></td>
+                          <td class="columnaProyecto"></td>
+                        </tr>
+                        <tr>
+                          <td class="columnaProyecto">Canci&oacute;n</td>
+                          <td class="columnaProyecto">B&uacute;squeda de Canciones</td>
+                          <td class="columnaProyecto">Verifica que la b&uacute;squeda de canciones devuelva resultados precisos.</td>
+                          <td class="columnaProyecto">Los resultados de b&uacute;squeda deben ser precisos y completos.</td>
+                          <td class="columnaProyecto"></td>
+                          <td class="columnaProyecto"></td>
+                        </tr>
+                        <tr>
+                          <td class="columnaProyecto">Canci&oacute;n</td>
+                          <td class="columnaProyecto">Votaci&oacute;n de Canciones</td>
+                          <td class="columnaProyecto">Asegura que los usuarios puedan votar y desvotar canciones correctamente, y que los votos se registren adecuadamente.</td>
+                          <td class="columnaProyecto">Los votos se registran y actualizan correctamente en la base de datos.</td>
+                          <td class="columnaProyecto"></td>
+                          <td class="columnaProyecto"></td>
+                        </tr>
+              </table><br>
 
             <h1 class="maint">PRUEBAS</h1>
             <h2 class="subtext">Casos de pruebas frontend</h2>
