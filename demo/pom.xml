@@ -16,6 +16,13 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
+		<!-- Configura las propiedades de SonarQube -->
+		<sonar.host.url>http://app.inphotech.co:9000</sonar.host.url>
+		<sonar.login>squ_69d7e6039a4f56256eb06ec89293167fda738123</sonar.login>
+		<sonar.password></sonar.password>
+		<sonar.projectKey>PROYECTO-DESARROLLO-WEB-BACKEND</sonar.projectKey>
+		<sonar.projectName>MusicaList</sonar.projectName>
+		<sonar.projectVersion>1.0</sonar.projectVersion>
 	</properties>
 	<dependencies>
 
@@ -53,6 +60,10 @@
 		    <artifactId>aws-java-sdk-core</artifactId>
 		    <version>1.8.10.2</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
 		
 	</dependencies>
 
@@ -61,6 +72,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.7.0.1746</version>
 			</plugin>
 		</plugins>
 	</build>

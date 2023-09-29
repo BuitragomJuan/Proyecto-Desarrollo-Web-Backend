@@ -21,15 +21,15 @@ public class DemoApplication {
 		return args -> {
 			Contactenos contactenos = new Contactenos();
 
-			contactenos.setNombre("juan");
-			contactenos.setApellido("Buitrago");
-			contactenos.setFecha("2023-12-12");
-			contactenos.setEdad(20);
+			contactenos.setNombre("Frank");
+			contactenos.setApellido("Hernandez");
+			contactenos.setFecha("2022-07-04");
+			contactenos.setEdad(17);
 		
 			contactenosRepository.save(contactenos);
 		};
 
 		
-	} 
+	}
 
 }

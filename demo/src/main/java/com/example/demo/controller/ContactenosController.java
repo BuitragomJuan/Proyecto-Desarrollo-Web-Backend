@@ -1,4 +1,4 @@
-package com.example.controllers;
+package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,17 +17,21 @@ public class ContactenosController {
     private ContactenosRepository contactenosRepository;
 
     
+    @GetMapping("/")
+    public String showHome() {
+        return "homepage";
+    }
+
     @GetMapping("/contactenos")
     public String showForm(Model model) {
         model.addAttribute("contactenos", new Contactenos());
         return "contactenos";
     }
-
     
     @PostMapping("/save-data")
     public String saveData(@ModelAttribute Contactenos contactenos) {
 
         contactenosRepository.save(contactenos);
-        return "redirect:/contactenos"; 
+        return "redirect:/contactenos";
     }
 }
