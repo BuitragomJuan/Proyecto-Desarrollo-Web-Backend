@@ -6,7 +6,7 @@
 <body>
     <script src = "../static/js/contacto.js"></script>
     <div class="banner">
-        <form th:action="@{/contactenos/save-data}" method="post">
+        <form th:action="@{/contactenos}" method="post" th:object="${contactenos}">
             <label for="nombre">Nombres:</label><br>
             <input type ="text" id="nombre" onkeydown= "namesConstraint(this.value)" name="nombre"><br>
             <label class= "hiddenElm" id="charsName">m&aacute;ximo de car&aacute;cteres alcanzado</label><br>

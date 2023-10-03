@@ -28,7 +28,7 @@ public class ContactenosController {
         return "contactenos";
     }
     
-    @PostMapping("/save-data")
+    @PostMapping("/contactenos")
     public String saveData(@ModelAttribute Contactenos contactenos) {
 
         contactenosRepository.save(contactenos);
