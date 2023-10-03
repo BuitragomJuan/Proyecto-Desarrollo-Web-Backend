@@ -16,7 +16,17 @@ public class ContactenosController {
     @Autowired
     private ContactenosRepository contactenosRepository;
 
-    
+    @GetMapping("/proyecto")
+    public String showProyecto() {
+        return "proyecto";
+    }
+
+    @GetMapping("/equipo")
+    public String showTeam() {
+        return "equipo";
+    }
+
+
     @GetMapping("/")
     public String showHome() {
         return "homepage";
