@@ -216,173 +216,195 @@
 
             <h2 class="subtext">Pruebas Unitarias</h2>
             <table class="tablaProyecto">
-                <tr>
-                  <td class="columnaProyecto">Clase</td>
-                  <td class="columnaProyecto">Nombre de la prueba</td>
-                  <td class="columnaProyecto">Descripci&oacute;</td>
-                  <td class="columnaProyecto">Resultados Esperados</td>
-                  <td class="columnaProyecto">Resultados reales</td>
-                  <td class="columnaProyecto">Cumpli&oacute;</td>
+                <tr class=>
+                  <td class="columnaProyecto titulos_unit">Test case ID</td>
+                  <td class="columnaProyecto titulos_unit">Descripci&oacute;n</td>
+                  <td class="columnaProyecto titulos_unit">pasos a seguir</td>
+                  <td class="columnaProyecto titulos_unit">Test Data</td>
+                  <td class="columnaProyecto titulos_unit">resultados esperados</td>
+                  <td class="columnaProyecto titulos_unit">resultados actuales</td>
+                  <td class="columnaProyecto titulos_unit">Pass/Fail</td>
                 </tr>
                 <tr>
-                  <td class="columnaProyecto">UsuarioAdmon</td>
-                  <td class="columnaProyecto">Creaci&oacute;n de Usuario administrador</td>
-                  <td class="columnaProyecto">Verifica que se pueda crear un objeto correctamente.</td>
-                  <td class="columnaProyecto">Los atributos deben coincidir con los datos proporcionados.</td>
+                  <td class="columnaProyecto">001</td>
+                  <td class="columnaProyecto">Para la clase de UsuarioAdmon se hace una prueba del establecimiento de la conexion con la base de datos</td>
                   <td class="columnaProyecto"></td>
                   <td class="columnaProyecto"></td>
-                </tr>
-                <tr>
-                  <td class="columnaProyecto">UsuarioAdmon</td>
-                  <td class="columnaProyecto">Validaci&oacute;n de correo único</td>
-                  <td class="columnaProyecto"> Comprueba que no se puedan crear múltiples usuarios administradores con el mismo correo.</td>
-                  <td class="columnaProyecto">El segundo intento de creación debe fallar debido a la restricción de correo electrónico único..</td>
+                  <td class="columnaProyecto"></td>
                   <td class="columnaProyecto"></td>
                   <td class="columnaProyecto"></td>
                 </tr>
                 <tr>
-                    <td class="columnaProyecto">UsuarioAdmon</td>
-                    <td class="columnaProyecto">Actualizaci&oacute;n de contraseña</td>
-                    <td class="columnaProyecto">Verifica que se pueda actualizar la contraseña de un usuario administrador correctamente.</td>
-                    <td class="columnaProyecto">La contraseña después de la actualización debe coincidir con la nueva contraseña.</td>
-                    <td class="columnaProyecto"></td>
-                    <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto">002</td>
+                  <td class="columnaProyecto">Para la clase de UsuarioAdmon se hace una prueba de la inserci&oacute;n de datos a la entidad correspondiente existente en la base de datos</td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
                 </tr>
                 <tr>
-                    <td class="columnaProyecto">UsuarioAdmon</td>
-                    <td class="columnaProyecto">Descativaci&oacute;n de cuenta</td>
-                    <td class="columnaProyecto">Confirma que se pueda desactivar la cuenta de un usuario administrador.</td>
-                    <td class="columnaProyecto">El estado de activación de la cuenta debe cambiar a "inactivo" después de la desactivación.</td>
-                    <td class="columnaProyecto"></td>
-                    <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto">003</td>
+                  <td class="columnaProyecto">Para la clase de UsuarioAdmon se hace una prueba de la eliminaci&oacute;n de datos a la entidad correspondiente existente en la base de datos</td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                </tr>
+
+                <tr>
+                  <td class="columnaProyecto">004</td>
+                  <td class="columnaProyecto">Para la clase de UsuarioAdmon se hace una prueba de la actualizaci&oacute;n de datos a la entidad correspondiente existente en la base de datos</td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
                 </tr>
                 <tr>
-                    <td class="columnaProyecto">UsuarioAdmon</td>
-                    <td class="columnaProyecto">Eliminaci&oacute;n de usuario</td>
-                    <td class="columnaProyecto">Comprueba que se pueda eliminar un usuario administrador de la base de datos.</td>
-                    <td class="columnaProyecto">El usuario administrador se debe eliminar correctamente de la base de datos.</td>
-                    <td class="columnaProyecto"></td>
-                    <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto">005</td>
+                  <td class="columnaProyecto">Para la clase de Usuariovotante se hace una prueba del establecimiento de la conexion con la base de datos</td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
                 </tr>
                 <tr>
-                    <td class="columnaProyecto">UsuarioVotante</td>
-                    <td class="columnaProyecto">Creaci&oacute;n de Usuario votante</td>
-                    <td class="columnaProyecto">Verifica que se pueda crear un objeto correctamente.</td>
-                    <td class="columnaProyecto">Los atributos deben coincidir con los datos proporcionados.</td>
-                    <td class="columnaProyecto"></td>
-                    <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto">006</td>
+                  <td class="columnaProyecto">Para la clase de Usuariovotante se hace una prueba de la inserci&oacute;n de datos a la entidad correspondiente existente en la base de datos</td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
                 </tr>
                 <tr>
-                    <td class="columnaProyecto">UsuarioVotante</td>
-                    <td class="columnaProyecto">Votación por canción</td>
-                    <td class="columnaProyecto"> Comprueba que un usuario votante pueda votar por una canción.</td>
-                    <td class="columnaProyecto">El contador de votos de la canción debe aumentar en uno después de que el usuario votante haya votado.</td>
-                    <td class="columnaProyecto"></td>
-                    <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto">007</td>
+                  <td class="columnaProyecto">Para la clase de Usuariovotante se hace una prueba de la eliminaci&oacute;n de datos a la entidad correspondiente existente en la base de datos</td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
                 </tr>
                 <tr>
-                    <td class="columnaProyecto">UsuarioVotante</td>
-                    <td class="columnaProyecto">B&eacute;usqueda; de canci&eacute;n</td>
-                    <td class="columnaProyecto">Confirma que un usuario votante pueda buscar una canción por nombre.</td>
-                    <td class="columnaProyecto">Asegurarse de que la búsqueda devuelva la canción correcta según el nombre proporcionado.</td>
-                    <td class="columnaProyecto"></td>
-                    <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto">008</td>
+                  <td class="columnaProyecto">Para la clase de Usuariovotante se hace una prueba de la actualizaci&oacute;n de datos a la entidad correspondiente existente en la base de datos</td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
                 </tr>
                 <tr>
-                    <td class="columnaProyecto">UsuarioVotante</td>
-                    <td class="columnaProyecto">Creación de lista de canciones</td>
-                    <td class="columnaProyecto">Verifica que un usuario votante pueda crear una lista de canciones.</td>
-                    <td class="columnaProyecto">La lista de canciones se haya creado correctamente y esté asociada al usuario votante.</td>
-                    <td class="columnaProyecto"></td>
-                    <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto">009</td>
+                  <td class="columnaProyecto">Para la clase de Cancion se hace una prueba del establecimiento de la conexion con la base de datos</td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
                 </tr>
                 <tr>
-                    <td class="columnaProyecto">UsuarioVotante</td>
-                    <td class="columnaProyecto">Actualización de Datos del Usuario Votante</td>
-                    <td class="columnaProyecto">Comprueba que un usuario votante pueda actualizar su información personal.</td>
-                    <td class="columnaProyecto">Asegurarse de que los datos del usuario votante se hayan actualizado correctamente en la base de datos.</td>
-                    <td class="columnaProyecto"></td>
-                    <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto">010</td>
+                  <td class="columnaProyecto">Para la clase de Cancion se hace una prueba de la inserci&oacute;n de datos a la entidad correspondiente existente en la base de datos</td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
                 </tr>
                 <tr>
-                    <td class="columnaProyecto">Listas</td>
-                    <td class="columnaProyecto">Creaci&oacute;n de lista de canciones</td>
-                    <td class="columnaProyecto">Verifica que se pueda crear una instancia de Listas correctamente.</td>
-                    <td class="columnaProyecto">Los atributos deben coincidir con los datos proporcionados.</td>
-                    <td class="columnaProyecto"></td>
-                    <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto">011</td>
+                  <td class="columnaProyecto">Para la clase de Cancion se hace una prueba de la eliminaci&oacute;n de datos a la entidad correspondiente existente en la base de datos</td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
                 </tr>
                 <tr>
-                    <td class="columnaProyecto">Listas</td>
-                    <td class="columnaProyecto">Actualizaci&oacute;n del nombre de la lista:</td>
-                    <td class="columnaProyecto"> Comprueba que se pueda actualizar el nombre de la lista de canciones.</td>
-                    <td class="columnaProyecto">El nombre de la lista de canciones debe coincidir con el nuevo nombre especificado.</td>
-                    <td class="columnaProyecto"></td>
-                    <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto">012</td>
+                  <td class="columnaProyecto">Para la clase de Cancion se hace una prueba de la actualizaci&oacute;n de datos a la entidad correspondiente existente en la base de datos</td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
                 </tr>
                 <tr>
-                    <td class="columnaProyecto">Listas</td>
-                    <td class="columnaProyecto">Adición de Canción a la Lista</td>
-                    <td class="columnaProyecto">Comprueba que se pueda agregar una canci&oacute;n a la lista.</td>
-                    <td class="columnaProyecto">La lista de canciones debe contener la canción agregada.</td>
-                    <td class="columnaProyecto"></td>
-                    <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto">013</td>
+                  <td class="columnaProyecto">Para la clase de Contactenos se hace una prueba del establecimiento de la conexion con la base de datos</td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
                 </tr>
                 <tr>
-                    <td class="columnaProyecto">Listas</td>
-                    <td class="columnaProyecto">Eliminación de Canción de la Lista</td>
-                    <td class="columnaProyecto">Verifica que se pueda eliminar una canción de la lista de canciones.</td>
-                    <td class="columnaProyecto">La lista de canciones debe estar vacía después de eliminar la canción.</td>
-                    <td class="columnaProyecto"></td>
-                    <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto">014</td>
+                  <td class="columnaProyecto">Para la clase de Contactenos se hace una prueba de la inserci&oacute;n de datos a la entidad correspondiente existente en la base de datos</td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
                 </tr>
                 <tr>
-                    <td class="columnaProyecto">Listas</td>
-                    <td class="columnaProyecto">Obtenci&oacute;n de la lista de Canciones</td>
-                    <td class="columnaProyecto">Confirma que se pueda obtener la lista de canciones asociada a Listas.</td>
-                    <td class="columnaProyecto">La lista de canciones obtenida debe contener todas las canciones asociadas a Listas.</td>
-                    <td class="columnaProyecto"></td>
-                    <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto">015</td>
+                  <td class="columnaProyecto">Para la clase de Contactenos se hace una prueba de la eliminaci&oacute;n de datos a la entidad correspondiente existente en la base de datos</td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
                 </tr>
                 <tr>
-                    <td class="columnaProyecto">Cancion</td>
-                    <td class="columnaProyecto">Creaci&oacute;n de canciones</td>
-                    <td class="columnaProyecto">Verifica que se pueda crear una instancia de 'Cancion' correctamente.</td>
-                    <td class="columnaProyecto">Los atributos deben coincidir con los datos proporcionados.</td>
-                    <td class="columnaProyecto"></td>
-                    <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto">016</td>
+                  <td class="columnaProyecto">Para la clase de Contactenos se hace una prueba de la actualizaci&oacute;n de datos a la entidad correspondiente existente en la base de datos</td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
                 </tr>
                 <tr>
-                    <td class="columnaProyecto">Cancion</td>
-                    <td class="columnaProyecto">Actualizaci&oacute;n del rating de la canción:</td>
-                    <td class="columnaProyecto">Comprueba que se pueda actualizar el rating de una canción correctamente.</td>
-                    <td class="columnaProyecto">El rating de la canción debe coincidir con el nuevo valor especificado.</td>
-                    <td class="columnaProyecto"></td>
-                    <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto">017</td>
+                  <td class="columnaProyecto">Para la clase de Listas se hace una prueba del establecimiento de la conexion con la base de datos</td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
                 </tr>
                 <tr>
-                    <td class="columnaProyecto">Cancion</td>
-                    <td class="columnaProyecto">Asociar una Canción a una Lista</td>
-                    <td class="columnaProyecto">Verifica que se pueda asociar una canción a una lista de canciones correctamente.</td>
-                    <td class="columnaProyecto">La canción debe estar asociada a la lista de canciones</td>
-                    <td class="columnaProyecto"></td>
-                    <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto">018</td>
+                  <td class="columnaProyecto">Para la clase de Listas se hace una prueba de la inserci&oacute;n de datos a la entidad correspondiente existente en la base de datos</td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
                 </tr>
                 <tr>
-                    <td class="columnaProyecto">Cancion</td>
-                    <td class="columnaProyecto">Obtención de detalles de la Canción</td>
-                    <td class="columnaProyecto">Confirma que se puedan obtener los detalles de una canción correctamente.</td>
-                    <td class="columnaProyecto">Los detalles obtenidos deben coincidir con los datos de la canción creada.</td>
-                    <td class="columnaProyecto"></td>
-                    <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto">019</td>
+                  <td class="columnaProyecto">Para la clase de Listas se hace una prueba de la eliminaci&oacute;n de datos a la entidad correspondiente existente en la base de datos</td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
                 </tr>
                 <tr>
-                    <td class="columnaProyecto">Cancion</td>
-                    <td class="columnaProyecto">Eliminaci&oacute;n de Canciones</td>
-                    <td class="columnaProyecto">Comprueba que se pueda eliminar una canción de la base de datos</td>
-                    <td class="columnaProyecto">La canción debe eliminarse correctamente de la base de datos.</td>
-                    <td class="columnaProyecto"></td>
-                    <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto">020</td>
+                  <td class="columnaProyecto">Para la clase de Listas se hace una prueba de la actualizaci&oacute;n de datos a la entidad correspondiente existente en la base de datos</td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
+                  <td class="columnaProyecto"></td>
                 </tr>
               </table><br>
 
