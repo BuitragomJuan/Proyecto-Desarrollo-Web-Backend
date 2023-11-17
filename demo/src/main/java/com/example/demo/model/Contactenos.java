@@ -29,7 +29,7 @@ public class Contactenos {
     @Column(
         name = "fecha",
         nullable = false,
-        columnDefinition = "Text"
+        columnDefinition = "Date"
     )
     private String fecha;
 
