@@ -9,18 +9,22 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.AutenticacionService;
 import com.example.demo.JwtRequest;
 import com.example.demo.JwtResponse;
 import com.example.demo.JwtTokenUtil;
 import com.example.demo.MyUserDetailsService;
 import com.example.demo.model.usuarios.UsuarioAdmon;
+//import com.example.demo.model.usuarios.UsuarioAdmon;
 import com.example.demo.model.usuarios.UsuarioAdmonRepository;
 import com.example.demo.model.usuarios.Usuariovotante;
 import com.example.demo.model.usuarios.UsuariovotanteRepository;
 
 @RestController
+@RequestMapping("/api")
 public class AuthController {
 
     @Autowired
@@ -34,6 +38,9 @@ public class AuthController {
 
     @Autowired
     private UsuarioAdmonRepository administradorRepository;
+
+    @Autowired
+    private AutenticacionService authService;
 
     @Autowired
     private UsuariovotanteRepository votanteRepository;
@@ -52,21 +59,26 @@ public class AuthController {
         return ResponseEntity.ok(new JwtResponse(token, token));
     }
 
-    @PostMapping("/signup/administrador")
-    public ResponseEntity<?> signUpAdministrador(@RequestBody JwtRequest authenticationRequest) {
+    @PostMapping("/admin/registro")
+    public ResponseEntity<?> signUpAdministrador(@RequestBody UsuarioAdmon adminUser) {
         // Verificar si el nombre de usuario ya está registrado
-        if (administradorRepository.findByNombre(authenticationRequest.getUsername()) != null) {
+        if (administradorRepository.findByNombre(adminUser.getNombre()) != null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El nombre de usuario ya está registrado");
         }
 
+        UsuarioAdmon registeredUser = authService.createAdmin(adminUser);
+        return ResponseEntity.ok("Usuario administrador registrado exitosamente");
+
         // Lógica para registrar Administrador
-        UsuarioAdmon nuevoAdministrador = new UsuarioAdmon();
-        nuevoAdministrador.setNombre(authenticationRequest.getUsername());
-        nuevoAdministrador.setPassword(authenticationRequest.getPassword());
+        //UsuarioAdmon nuevoAdministrador = new UsuarioAdmon();
+        //nuevoAdministrador.setNombre(authenticationRequest.getUsername());
+        //nuevoAdministrador.setPassword(authenticationRequest.getPassword());
 
-        administradorRepository.save(nuevoAdministrador);
+        //administradorRepository.save(nuevoAdministrador);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body("Administrador registrado exitosamente");
+        //String token = jwtTokenUtil.generateToken(adminUser.getNombre());
+        //return ResponseEntity.status(HttpStatus.CREATED).body("Administrador registrado exitosamente");
+        //return ResponseEntity.ok(new JwtResponse(token, token));
     }
 
     @PostMapping("/signup/votante")

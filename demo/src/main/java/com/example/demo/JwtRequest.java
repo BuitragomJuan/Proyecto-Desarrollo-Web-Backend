@@ -2,12 +2,17 @@ package com.example.demo;
 
 import java.io.Serializable;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
+@Component
 public class JwtRequest implements Serializable {
 
     private static final long serialVersionUID = 5926468583005150707L;
 
     private String username;
     private String password;
+
+	public UserDetails getUsername;
 
     // Necesario para la deserialización
     public JwtRequest() {
