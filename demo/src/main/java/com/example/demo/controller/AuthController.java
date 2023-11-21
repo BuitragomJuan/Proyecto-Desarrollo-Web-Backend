@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.AutenticacionService;
+//import com.example.demo.AutenticacionService;
 import com.example.demo.JwtRequest;
 import com.example.demo.JwtResponse;
 import com.example.demo.JwtTokenUtil;
@@ -39,8 +39,8 @@ public class AuthController {
     @Autowired
     private UsuarioAdmonRepository administradorRepository;
 
-    @Autowired
-    private AutenticacionService authService;
+    //@Autowired
+    //private AutenticacionService authService;
 
     @Autowired
     private UsuariovotanteRepository votanteRepository;
@@ -56,7 +56,7 @@ public class AuthController {
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         final String token = jwtTokenUtil.generateToken(userDetails);
 
-        return ResponseEntity.ok(new JwtResponse(token, token));
+        return ResponseEntity.ok(new JwtResponse(token, userDetails.getUsername()));
     }
 
     @PostMapping("/admin/registro")
@@ -66,8 +66,10 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El nombre de usuario ya está registrado");
         }
 
-        UsuarioAdmon registeredUser = authService.createAdmin(adminUser);
-        return ResponseEntity.ok("Usuario administrador registrado exitosamente");
+        //UsuarioAdmon registeredUser = authService.createAdmin(adminUser);
+        administradorRepository.save(adminUser);
+        //return ResponseEntity.ok("Usuario administrador registrado exitosamente");
+        return ResponseEntity.status(HttpStatus.CREATED).body("Usuario registrado exitosamente");
 
         // Lógica para registrar Administrador
         //UsuarioAdmon nuevoAdministrador = new UsuarioAdmon();
@@ -81,7 +83,7 @@ public class AuthController {
         //return ResponseEntity.ok(new JwtResponse(token, token));
     }
 
-    @PostMapping("/signup/votante")
+    @PostMapping("votante/registro")
     public ResponseEntity<?> signUpVotante(@RequestBody JwtRequest authenticationRequest) {
         // Verificar si el nombre de usuario ya está registrado
         if (votanteRepository.findByNombre(authenticationRequest.getUsername()) != null) {
