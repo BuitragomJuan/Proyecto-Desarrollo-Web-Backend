@@ -55,7 +55,7 @@ public class AuthController {
     @PostMapping("/signup/administrador")
     public ResponseEntity<?> signUpAdministrador(@RequestBody JwtRequest authenticationRequest) {
         // Verificar si el nombre de usuario ya está registrado
-        if (administradorRepository.findByNombreUsuarioAdmon(authenticationRequest.getUsername()) != null) {
+        if (administradorRepository.findByNombre(authenticationRequest.getUsername()) != null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El nombre de usuario ya está registrado");
         }
 
@@ -72,7 +72,7 @@ public class AuthController {
     @PostMapping("/signup/votante")
     public ResponseEntity<?> signUpVotante(@RequestBody JwtRequest authenticationRequest) {
         // Verificar si el nombre de usuario ya está registrado
-        if (votanteRepository.findByNombreUsuariovotante(authenticationRequest.getUsername()) != null) {
+        if (votanteRepository.findByNombre(authenticationRequest.getUsername()) != null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El nombre de usuario ya está registrado");
         }
 

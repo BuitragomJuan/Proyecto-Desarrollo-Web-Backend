@@ -22,7 +22,7 @@ public class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
          // Intenta cargar el usuario como Administrador
-         UsuarioAdmon administrador = adminRepository.findByNombreUsuarioAdmon(username);
+         UsuarioAdmon administrador = adminRepository.findByNombre(username);
          if (administrador != null) {
              return User.builder()
                      .username(administrador.getNombre())
@@ -32,7 +32,7 @@ public class MyUserDetailsService implements UserDetailsService {
          }
  
          // Si no es un Administrador, intenta cargar el usuario como Votante
-         Usuariovotante votante = votanteRepository.findByNombreUsuariovotante(username);
+         Usuariovotante votante = votanteRepository.findByNombre(username);
          if (votante != null) {
              return User.builder()
                      .username(votante.getNombre())
