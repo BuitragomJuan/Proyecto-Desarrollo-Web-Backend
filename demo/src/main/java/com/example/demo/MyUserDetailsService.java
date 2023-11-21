@@ -17,31 +17,32 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
     private UsuarioAdmonRepository adminRepository;
+    @Autowired
     private UsuariovotanteRepository votanteRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String correo) throws UsernameNotFoundException {
          // Intenta cargar el usuario como Administrador
-         UsuarioAdmon administrador = adminRepository.findByNombre(username);
+         UsuarioAdmon administrador = adminRepository.findByCorreo(correo);
          if (administrador != null) {
              return User.builder()
-                     .username(administrador.getNombre())
+                     .username(administrador.getCorreo())
                      .password(administrador.getPassword())
                      .roles("ROLE_ADMIN")  // Puedes ajustar los roles según tus necesidades
                      .build();
          }
  
          // Si no es un Administrador, intenta cargar el usuario como Votante
-         Usuariovotante votante = votanteRepository.findByNombre(username);
+         Usuariovotante votante = votanteRepository.findByCorreo(correo);
          if (votante != null) {
              return User.builder()
-                     .username(votante.getNombre())
+                     .username(votante.getCorreo())
                      .password(votante.getPassword())
                      .roles("ROLE_USER")  // Puedes ajustar los roles según tus necesidades
                      .build();
          }
  
          // Si no se encuentra el usuario, lanza una excepción
-         throw new UsernameNotFoundException("Usuario no encontrado con nombre de usuario: " + username);
+         throw new UsernameNotFoundException("Usuario no encontrado con correo: " + correo);
     }
 }

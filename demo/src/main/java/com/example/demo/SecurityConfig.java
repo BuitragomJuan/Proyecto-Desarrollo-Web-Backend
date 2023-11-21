@@ -19,14 +19,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
+        http.cors().and();
+        
         http.csrf(csrf -> csrf.disable())
-                .authorizeRequests(requests -> requests.antMatchers("/authenticate", "api/admin/registro", "/signup/votante").permitAll()
+                .authorizeRequests(requests -> requests.antMatchers("/api/authenticate", "/api/admin/registro", "/api/votante/registro").permitAll()
                         .anyRequest().authenticated()).sessionManagement(management -> management
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
-    /*~~(Migrate manually based on https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter)~~>*//*~~(Migrate manually based on https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter)~~>*/@Bean
+    @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -39,30 +40,37 @@ public class AuthController {
     @Autowired
     private UsuarioAdmonRepository administradorRepository;
 
-    //@Autowired
-    //private AutenticacionService authService;
+    /*@Autowired
+    private AutenticacionService authService; */
 
     @Autowired
     private UsuariovotanteRepository votanteRepository;
 
      @PostMapping("/authenticate")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
-        // Autenticar al usuario
-        final Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
-        );
+        
+        try{
+            // Autenticar al usuario
+            final Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(authenticationRequest.getCorreo(), authenticationRequest.getPassword())
+            );
 
-        // Generar token JWT
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
-        final String token = jwtTokenUtil.generateToken(userDetails);
+            // Generar token JWT
+            final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getCorreo());
+            final String token = jwtTokenUtil.generateToken(userDetails);
 
-        return ResponseEntity.ok(new JwtResponse(token, userDetails.getUsername()));
+            return ResponseEntity.ok(new JwtResponse(token, userDetails.getUsername()));
+        }catch(BadCredentialsException e){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("credenciales invalidas");
+        }catch(Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error");
+        }
     }
 
     @PostMapping("/admin/registro")
     public ResponseEntity<?> signUpAdministrador(@RequestBody UsuarioAdmon adminUser) {
         // Verificar si el nombre de usuario ya está registrado
-        if (administradorRepository.findByNombre(adminUser.getNombre()) != null) {
+        if (administradorRepository.findByCorreo(adminUser.getCorreo()) != null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El nombre de usuario ya está registrado");
         }
 
@@ -83,17 +91,19 @@ public class AuthController {
         //return ResponseEntity.ok(new JwtResponse(token, token));
     }
 
-    @PostMapping("votante/registro")
+    @PostMapping("/votante/registro")
     public ResponseEntity<?> signUpVotante(@RequestBody JwtRequest authenticationRequest) {
         // Verificar si el nombre de usuario ya está registrado
-        if (votanteRepository.findByNombre(authenticationRequest.getUsername()) != null) {
+        if (votanteRepository.findByCorreo(authenticationRequest.getNombre()) != null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El nombre de usuario ya está registrado");
         }
 
         // Lógica para registrar Votante
         Usuariovotante nuevoVotante = new Usuariovotante();
-        nuevoVotante.setNombre(authenticationRequest.getUsername());
+        nuevoVotante.setNombre(authenticationRequest.getNombre());
         nuevoVotante.setPassword(authenticationRequest.getPassword());
+        nuevoVotante.setId(authenticationRequest.getId());
+        nuevoVotante.setCorreo(authenticationRequest.getCorreo());
 
         votanteRepository.save(nuevoVotante);
 

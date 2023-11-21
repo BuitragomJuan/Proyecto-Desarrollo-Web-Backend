@@ -2,33 +2,32 @@ package com.example.demo;
 
 import java.io.Serializable;
 
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 @Component
 public class JwtRequest implements Serializable {
 
     private static final long serialVersionUID = 5926468583005150707L;
 
-    private String username;
+    private String nombre;
     private String password;
-
-	public UserDetails getUsername;
+    private String id;
+    private String correo;
 
     // Necesario para la deserialización
     public JwtRequest() {
     }
 
-    public JwtRequest(String username, String password) {
-        this.setUsername(username);
+    public JwtRequest(String correo, String password) {
+        this.setCorreo(correo);
         this.setPassword(password);
     }
 
-    public String getUsername() {
-        return this.username;
+    public String getNombre() {
+        return this.nombre;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getPassword() {
@@ -38,5 +37,22 @@ public class JwtRequest implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getId(){
+        return this.id;
+    }
+
+    public void setId(String id){
+        this.id=id;
+    }
+
+    public String getCorreo(){
+        return this.correo;
+    }
+
+    public void setCorreo(String correo){
+        this.correo=correo;
+    }
+
 }
 
