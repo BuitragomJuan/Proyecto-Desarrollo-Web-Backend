@@ -1,18 +1,22 @@
-package com.example.demo.model.usuarios;
+package com.example.demo.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(
-    name = "usuarioadmon"
+
+    name = "usuariovotante"
+
 )
-public class UsuarioAdmon {
-
-
+public class Usuariovotante {
+    
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(
         name = "ID",
         nullable = false,
@@ -42,7 +46,7 @@ public class UsuarioAdmon {
     )
     private String pass;
 
-    public UsuarioAdmon (){
+    public Usuariovotante (){
 
     }
 
@@ -77,7 +81,6 @@ public class UsuarioAdmon {
     public void setPassword(String password){
         this.pass= password;
     }
-    
 
-    
+
 }

@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.example.demo.model.Cancion;
-import com.example.demo.model.CancionRepository;
+import com.example.demo.entity.Cancion;
+import com.example.demo.repository.CancionRepository;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -26,8 +26,8 @@ public class CancionTest {
     @Order(1)
     public void testCreate(){
 
-        Cancion can = new Cancion();
-        can.setId("0001");
+        Cancion can = new Cancion(null, null, 0, null, null, 1L, null);
+        //can.setId("0001");
         can.setNombre("Does");
         can.setAlbum("Janes");
         can.setArtista("Jane Doe");
@@ -45,7 +45,7 @@ public class CancionTest {
     @Order(2)
     public void testDBC() {
 
-        Cancion can = cRepository.findById("0001").orElse(null);
+        Cancion can = cRepository.findById(1234567899L).orElse(null);
         assertNotNull(can);
     }
 
@@ -53,8 +53,8 @@ public class CancionTest {
     @Order(4)
     public void testDelete(){
 
-        String ID1 = "0001";
-        String ID2 = "0002";
+        Long ID1 = 123456789L;
+        Long ID2 = 123456788L;
 
         cRepository.deleteById(ID1);
         cRepository.deleteById(ID2);
@@ -73,8 +73,8 @@ public class CancionTest {
     public void testUpdate(){
 
 
-        Cancion can = new Cancion();
-        can.setId("0002");
+        Cancion can = new Cancion(null, null, 0, null, null, 1L, null);
+        //can.setId("0002");
         can.setNombre("Does2");
         can.setArtista("John Doe");
         can.setAlbum("Johns");

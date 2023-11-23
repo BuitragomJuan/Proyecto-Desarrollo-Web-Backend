@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.example.demo.model.usuarios.UsuarioAdmon;
-import com.example.demo.model.usuarios.UsuarioAdmonRepository;
+import com.example.demo.entity.UsuarioAdmon;
+import com.example.demo.repository.UsuarioAdmonRepository;
 
 @Controller
 public class UsuarioAdmonController {

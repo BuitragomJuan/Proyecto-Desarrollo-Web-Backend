@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.Contactenos;
-import com.example.demo.model.ContactenosRepository;
+import com.example.demo.entity.Contactenos;
+import com.example.demo.repository.ContactenosRepository;
 
 @RestController
 @RequestMapping("/api/contactenos")

@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.example.demo.model.Contactenos;
-import com.example.demo.model.ContactenosRepository;
+import com.example.demo.entity.Contactenos;
+import com.example.demo.repository.ContactenosRepository;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
