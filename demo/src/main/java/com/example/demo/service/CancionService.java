@@ -26,6 +26,9 @@ public class CancionService {
     public Optional<Cancion> getByNombre(String nombre){
         return songRepository.findByNombre(nombre);
     }
+    public Optional<Cancion>getByNombreAndArtista(String nombre, String artista){
+        return songRepository.findByNombreAndArtista(nombre, artista);
+    }
     public void save (Cancion cancion){
         songRepository.save(cancion);
     }
@@ -37,6 +40,9 @@ public class CancionService {
     }
     public boolean existsByNombre(String nombre){
         return songRepository.existsByNombre(nombre);
+    }
+    public List<Cancion> getCancionesByListaId(Long listaId) {
+        return songRepository.findByListaId(listaId);
     }
 
     public List<Cancion> buscarCanciones(String nombre, String artista, String genero) {
@@ -50,21 +56,5 @@ public class CancionService {
             return songRepository.findAll();
         }
     }
-
-    
-    /*
-    public List<Cancion> buscarPorNombre(String nombre) {
-        return songRepository.findByNombreContainingIgnoreCase(nombre);
-    }
-
-    public List<Cancion> buscarPorArtista(String artista) {
-        return songRepository.findByArtistaContainingIgnoreCase(artista);
-    }
-
-    public List<Cancion> buscarPorGenero(String genero) {
-        return songRepository.findByGeneroContainingIgnoreCase(genero);
-    }
-    */
-    
     
 }

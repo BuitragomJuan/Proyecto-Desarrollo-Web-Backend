@@ -1,15 +1,24 @@
 package com.example.demo.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@Table(name = "cancion")
 public class Cancion {
 
     @Id
@@ -22,11 +31,10 @@ public class Cancion {
     private int rating;
     private String artista;
     private String album;
-    private Long gen_id;
 
-    @JsonManagedReference
-    @ManyToOne
-    @JoinColumn(name = "lista_id")
+    @JsonIdentityReference(alwaysAsId = true)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ListasID")
     private Lista lista;
 
     
@@ -34,13 +42,12 @@ public class Cancion {
     public Cancion() {
     }
 
-    public Cancion(String nombre, String genero, int rating, String artista, String album, Long gen_id, Lista lista) {
+    public Cancion(String nombre, String genero, int rating, String artista, String album, Lista lista) {
         this.nombre = nombre;
         this.genero = genero;
         this.rating = rating;
         this.artista = artista;
         this.album = album;
-        this.gen_id = gen_id;
         this.lista = lista;
     }
 
@@ -94,14 +101,6 @@ public class Cancion {
         return this.album;
     }
 
-    public Long getGen_id() {
-        return gen_id;
-    }
-
-    public void setGen_id(Long gen_id) {
-        this.gen_id = gen_id;
-    }
-
     public Lista getLista() {
         return lista;
     }
@@ -109,7 +108,5 @@ public class Cancion {
     public void setLista(Lista lista) {
         this.lista = lista;
     }
-
-    
     
 }

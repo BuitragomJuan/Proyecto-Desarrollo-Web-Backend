@@ -12,23 +12,18 @@ public class CancionDto {
     private int rating;
     private String artista;
     private String album;
-    private Long gen_id;
-
-    @ManyToOne
-    @JoinColumn(name = "lista_id")
-    private Lista lista;
+    private Long listaId;
 
     public CancionDto() {
     }
 
-    public CancionDto(String nombre, String genero, int rating, String artista, String album, Long gen_id, Lista lista) {
+    public CancionDto(String nombre, String genero, int rating, String artista, String album, Long listaId) {
         this.nombre = nombre;
         this.genero = genero;
         this.rating = rating;
         this.artista = artista;
         this.album = album;
-        this.gen_id = gen_id;
-        this.lista = lista;
+        this.listaId = listaId;
     }
     
     public String getNombre() {
@@ -61,21 +56,15 @@ public class CancionDto {
     public void setAlbum(String album) {
         this.album = album;
     }
+
+    public Long getListaId() {
+        return listaId;
+    }
+
+    public void setListaId(Long listaId) {
+        this.listaId = listaId;
+    }
+
     
-    public Long getGen_id() {
-        return gen_id;
-    }
-
-    public void setGen_id(Long gen_id) {
-        this.gen_id = gen_id;
-    }
-
-    public Lista getLista() {
-        return lista;
-    }
-
-    public void setLista(Lista lista) {
-        this.lista = lista;
-    }
     
 }

@@ -9,10 +9,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@Table(name = "lista")
 public class Lista {
     
     @Id
@@ -21,9 +28,9 @@ public class Lista {
     
     private String genero;
 
-    @JsonBackReference
-     @OneToMany(mappedBy = "lista", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Cancion> canciones = new ArrayList<>();;
+    @JsonIdentityReference(alwaysAsId = true)
+     @OneToMany(mappedBy = "lista")
+     private List<Cancion> canciones = new ArrayList<>();
 
 
     public Lista(){

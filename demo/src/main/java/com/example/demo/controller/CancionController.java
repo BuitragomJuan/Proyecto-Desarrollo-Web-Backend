@@ -75,17 +75,17 @@ public class CancionController {
         }
 
         // Obtener la Listas a la que pertenece o crear una nueva
-        Lista lista = listRepository.findById(songDto.getLista()).orElse(new Lista(songDto.getGenero(), new ArrayList<>()));
+        Lista lista = listRepository.findById(songDto.getListaId()).orElseGet(() -> new Lista(songDto.getGenero(), new ArrayList<>()));
 
         Cancion song = new Cancion(songDto.getNombre(), songDto.getGenero(), songDto.getRating(),
-                songDto.getArtista(), songDto.getAlbum(), songDto.getGen_id(), lista);
+                songDto.getArtista(), songDto.getAlbum(), lista);
         // Establecer la relación en ambos lados
-        song.setLista(lista);
         lista.getCanciones().add(song);
+        song.setLista(lista);
 
         // Guardar la Cancion
-        songService.save(song);
         listService.save(lista);
+        songService.save(song);
         return new ResponseEntity(new Mensaje("Canción creada"), HttpStatus.OK);
     }
 
@@ -106,8 +106,9 @@ public class CancionController {
         song.setAlbum(songDto.getAlbum());
         song.setGenero(songDto.getGenero());
         song.setRating(songDto.getRating());
-        song.setGen_id(songDto.getGen_id());
-        song.setLista(songDto.getLista());
+         // Usa setLista para establecer la relación con la entidad Lista
+        Lista lista = listService.getListaById(songDto.getListaId()).orElse(null);
+        song.setLista(lista);
         songService.save(song);
         return new ResponseEntity(new Mensaje("Canción actualizada"), HttpStatus.OK);
     }
@@ -139,22 +140,5 @@ public class CancionController {
         
                 return new ResponseEntity<>(canciones, HttpStatus.OK);
     }
-
-    /*
-    private ResponseEntity<List<Cancion>> buscarPorNombre(String nombre) {
-        List<Cancion> canciones = songService.buscarPorNombre(nombre);
-        return new ResponseEntity<>(canciones, HttpStatus.OK);
-    }
-
-    private ResponseEntity<List<Cancion>> buscarPorArtista(String artista) {
-        List<Cancion> canciones = songService.buscarPorArtista(artista);
-        return new ResponseEntity<>(canciones, HttpStatus.OK);
-    }
-
-    private ResponseEntity<List<Cancion>> buscarPorGenero(String genero) {
-        List<Cancion> canciones = songService.buscarPorGenero(genero);
-        return new ResponseEntity<>(canciones, HttpStatus.OK);
-    }
-    */
 
 }

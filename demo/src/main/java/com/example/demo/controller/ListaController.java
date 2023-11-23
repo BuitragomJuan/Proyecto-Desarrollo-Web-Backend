@@ -1,9 +1,11 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.dto.CancionDto;
 import com.example.demo.dto.ListaDto;
 import com.example.demo.dto.Mensaje;
 import com.example.demo.entity.Cancion;
@@ -64,23 +67,69 @@ public class ListaController {
         if (StringUtils.isBlank(songDto.getGenero())) {
             return new ResponseEntity(new Mensaje("El genero es obligatorio"), HttpStatus.BAD_REQUEST);
         }
-        Lista song = new Lista(songDto.getGenero(), songDto.getCanciones());
-        lisService.save(song);
+        Lista lista = new Lista();
+        lista.setGenero(songDto.getGenero());
+
+        // Asegúrate de establecer la referencia en las canciones a la nueva lista
+        List<CancionDto> cancionesDto = songDto.getCanciones();
+        if (cancionesDto != null) {
+            List<Cancion> canciones = new ArrayList<>();
+            for (CancionDto cancionDto : cancionesDto) {
+                Cancion cancion = new Cancion();
+                BeanUtils.copyProperties(cancionDto, cancion);
+                cancion.setLista(lista);
+                canciones.add(cancion);
+            }
+            // Actualiza la lista de canciones en la entidad Lista
+            lista.setCanciones(canciones);
+        }
+
+        lisService.save(lista);
         return new ResponseEntity(new Mensaje("Genero creado"), HttpStatus.OK);
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody ListaDto songDto) {
+    public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody ListaDto listaDto) {
         if (!lisService.existsById(id)) {
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         }
-        if (StringUtils.isBlank(songDto.getGenero())) {
+        if (StringUtils.isBlank(listaDto.getGenero())) {
             return new ResponseEntity(new Mensaje("El genero es obligatorio"), HttpStatus.BAD_REQUEST);
         }
-        Lista song = lisService.getOne(id).get();
-        song.setGenero(songDto.getGenero());
-        song.setCanciones(songDto.getCanciones());
-        lisService.save(song);
+        Lista lista = lisService.getOne(id).orElse(null);
+        if (lista == null) {
+            return new ResponseEntity(new Mensaje("No se encontró la lista con el ID " + id), HttpStatus.NOT_FOUND);
+        }
+
+        lista.setGenero(listaDto.getGenero());
+
+        // Actualiza las canciones asociadas
+        List<CancionDto> cancionesDto = listaDto.getCanciones();
+        if (cancionesDto != null) {
+            List<Cancion> canciones = new ArrayList<>();
+            for (CancionDto cancionDto : cancionesDto) {
+                if (cancionDto.getNombre() != null && cancionDto.getArtista() != null) {
+                    // Si el nombre está presente, carga la instancia existente desde la base de datos
+                    Cancion cancionExistente = cancionesService.getByNombreAndArtista(cancionDto.getNombre(), cancionDto.getArtista()).orElse(null);
+                    if (cancionExistente != null) {
+                        // Actualiza los valores de la canción existente con los nuevos valores
+                        BeanUtils.copyProperties(cancionDto, cancionExistente);
+                        cancionExistente.setLista(lista);
+                        canciones.add(cancionExistente);
+                    }
+                } else {
+                    // Si el ID no está presente, crea una nueva instancia
+                    Cancion cancionNueva = new Cancion();
+                    BeanUtils.copyProperties(cancionDto, cancionNueva);
+                    cancionNueva.setLista(lista);
+                    canciones.add(cancionNueva);
+                }
+            }
+            // Actualiza la lista de canciones en la entidad Lista
+            lista.setCanciones(canciones);
+        }
+
+        lisService.save(lista);
         return new ResponseEntity(new Mensaje("Genero actualizado"), HttpStatus.OK);
     }
 

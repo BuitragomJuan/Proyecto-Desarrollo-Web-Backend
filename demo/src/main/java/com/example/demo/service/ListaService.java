@@ -8,7 +8,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-//import com.example.demo.entity.Cancion;
 import com.example.demo.entity.Lista;
 import com.example.demo.repository.ListaRepository;
 
@@ -39,6 +38,9 @@ public class ListaService {
     }
     public boolean existsByGenero(String genero){
         return lisRepository.existsByGenero(genero);
+    }
+    public Optional<Lista> getListaById(Long id) {
+        return lisRepository.findById(id);//
     }
     
 }
