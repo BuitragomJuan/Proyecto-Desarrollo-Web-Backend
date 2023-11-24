@@ -38,9 +38,9 @@ public class Lista {
     }
     
 
-    public Lista(String genero, List<Cancion> canciones) {
+    public Lista(String genero) {
         this.genero = genero;
-        this.canciones = canciones;
+        //this.canciones = canciones;
     }
 
 

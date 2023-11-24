@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,18 +75,21 @@ public class CancionController {
             return new ResponseEntity(new Mensaje("El genero es obligatorio"), HttpStatus.BAD_REQUEST);
         }
 
-        // Obtener la Listas a la que pertenece o crear una nueva
-        Lista lista = listRepository.findById(songDto.getListaId()).orElseGet(() -> new Lista(songDto.getGenero(), new ArrayList<>()));
+        // Obtener la lista desde la base de datos o crear una nueva
+        Lista lista = listRepository.findById(songDto.getListaId()).orElseGet(() -> new Lista(songDto.getGenero()));
 
+        // Crear la canción y establecer la relación
         Cancion song = new Cancion(songDto.getNombre(), songDto.getGenero(), songDto.getRating(),
-                songDto.getArtista(), songDto.getAlbum(), lista);
+                songDto.getArtista(), songDto.getAlbum());
+
         // Establecer la relación en ambos lados
         lista.getCanciones().add(song);
         song.setLista(lista);
 
-        // Guardar la Cancion
+        // Guardar la Canción y la Lista
         listService.save(lista);
         songService.save(song);
+
         return new ResponseEntity(new Mensaje("Canción creada"), HttpStatus.OK);
     }
 
@@ -106,7 +110,7 @@ public class CancionController {
         song.setAlbum(songDto.getAlbum());
         song.setGenero(songDto.getGenero());
         song.setRating(songDto.getRating());
-         // Usa setLista para establecer la relación con la entidad Lista
+        // Usa setLista para establecer la relación con la entidad Lista
         Lista lista = listService.getListaById(songDto.getListaId()).orElse(null);
         song.setLista(lista);
         songService.save(song);
@@ -120,7 +124,7 @@ public class CancionController {
         }
         Cancion cancion = songService.getOne(id).get();
         Lista listaAsociada = cancion.getLista();
-    
+
         // Eliminar la canción de la lista
         if (listaAsociada != null) {
             listaAsociada.getCanciones().remove(cancion);
@@ -128,7 +132,7 @@ public class CancionController {
             // Guardar la lista actualizada
             listService.save(listaAsociada);
         }
-    
+
         // Finalmente, eliminar la canción
         songService.delete(id);
         return new ResponseEntity(new Mensaje("Canción borrada"), HttpStatus.NO_CONTENT);
@@ -140,17 +144,17 @@ public class CancionController {
             @RequestParam(name = "artista", required = false) String artista,
             @RequestParam(name = "genero", required = false) String genero) {
 
-                if (nombre == null && artista == null && genero == null) {
-                    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-                }
-        
-                List<Cancion> canciones = songService.buscarCanciones(nombre, artista, genero);
-        
-                if (canciones.isEmpty()) {
-                    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-                }
-        
-                return new ResponseEntity<>(canciones, HttpStatus.OK);
+        if (nombre == null && artista == null && genero == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        List<Cancion> canciones = songService.buscarCanciones(nombre, artista, genero);
+
+        if (canciones.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(canciones, HttpStatus.OK);
     }
 
 }

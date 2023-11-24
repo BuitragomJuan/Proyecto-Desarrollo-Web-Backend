@@ -64,7 +64,4 @@ public class CancionDto {
     public void setListaId(Long listaId) {
         this.listaId = listaId;
     }
-
-    
-    
 }

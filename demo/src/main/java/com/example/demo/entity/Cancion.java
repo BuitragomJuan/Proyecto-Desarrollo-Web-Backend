@@ -33,8 +33,8 @@ public class Cancion {
     private String album;
 
     @JsonIdentityReference(alwaysAsId = true)
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ListasID")
+    @ManyToOne
+    @JoinColumn(name = "lista_id")
     private Lista lista;
 
     
@@ -42,13 +42,13 @@ public class Cancion {
     public Cancion() {
     }
 
-    public Cancion(String nombre, String genero, int rating, String artista, String album, Lista lista) {
+    public Cancion(String nombre, String genero, int rating, String artista, String album) {
         this.nombre = nombre;
         this.genero = genero;
         this.rating = rating;
         this.artista = artista;
         this.album = album;
-        this.lista = lista;
+        //this.lista = lista;
     }
 
     

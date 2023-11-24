@@ -26,7 +26,7 @@ public class CancionTest {
     @Order(1)
     public void testCreate(){
 
-        Cancion can = new Cancion(null, null, 0, null, null, null);
+        Cancion can = new Cancion(null, null, 0, null, null);
         //can.setId("0001");
         can.setNombre("Does");
         can.setAlbum("Janes");
@@ -73,7 +73,7 @@ public class CancionTest {
     public void testUpdate(){
 
 
-        Cancion can = new Cancion(null, null, 0, null, null, null);
+        Cancion can = new Cancion(null, null, 0, null, null);
         //can.setId("0002");
         can.setNombre("Does2");
         can.setArtista("John Doe");
