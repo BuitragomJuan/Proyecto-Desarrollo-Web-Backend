@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,33 +16,10 @@ import javax.persistence.Table;
 public class Contactenos {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(
-        name = "nombre",
-        nullable = false,
-        columnDefinition = "Text"
-    )
     private String nombre;
 
-    @Column(
-        name = "apellido",
-        nullable = false,
-        columnDefinition = "Text"
-    )
     private String apellido;
-
-    @Column(
-        name = "fecha",
-        nullable = false,
-        columnDefinition = "Date"
-    )
     private String fecha;
-
-    @Column(
-        name= "edad",
-        nullable = false,
-        columnDefinition = "Integer"
-    )
     private int edad;
 
     public Contactenos(){
