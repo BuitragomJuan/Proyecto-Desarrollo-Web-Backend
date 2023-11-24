@@ -118,6 +118,18 @@ public class CancionController {
         if (!songService.existsById(id)) {
             return new ResponseEntity(new Mensaje("No se encontró la canción con el ID " + id), HttpStatus.NOT_FOUND);
         }
+        Cancion cancion = songService.getOne(id).get();
+        Lista listaAsociada = cancion.getLista();
+    
+        // Eliminar la canción de la lista
+        if (listaAsociada != null) {
+            listaAsociada.getCanciones().remove(cancion);
+
+            // Guardar la lista actualizada
+            listService.save(listaAsociada);
+        }
+    
+        // Finalmente, eliminar la canción
         songService.delete(id);
         return new ResponseEntity(new Mensaje("Canción borrada"), HttpStatus.NO_CONTENT);
     }

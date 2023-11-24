@@ -29,7 +29,7 @@ public class Lista {
     private String genero;
 
     @JsonIdentityReference(alwaysAsId = true)
-     @OneToMany(mappedBy = "lista")
+     @OneToMany(mappedBy = "lista", cascade = CascadeType.ALL)
      private List<Cancion> canciones = new ArrayList<>();
 
 

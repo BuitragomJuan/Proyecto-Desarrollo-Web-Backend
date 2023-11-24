@@ -32,8 +32,14 @@ public class CancionService {
     public void save (Cancion cancion){
         songRepository.save(cancion);
     }
-    public void delete(Long id){
-        songRepository.deleteById(id);
+    public void delete(Long id) {
+        Optional<Cancion> cancionOptional = songRepository.findById(id);
+        if (cancionOptional.isPresent()) {
+            Cancion cancion = cancionOptional.get();
+
+            // Elimina la canción sin afectar la lista
+            songRepository.delete(cancion);
+        }
     }
     public boolean existsById(Long id){
         return songRepository.existsById(id);
